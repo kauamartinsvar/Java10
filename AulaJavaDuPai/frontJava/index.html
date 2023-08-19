@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-Java</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Integração do frint com back </h1>
+    <h2>Aperte o botão para receber a mensagem do back end</h2>
+    <h2 id="mensagem_webapi">...</h2>
+    <button onclick="chamarApi()">Enviar Solicitação</button>
+</body>
+</html>
+<script>
+function chamarApi()
+{
+    $.ajax({
+        url: "http://localhost:8080/pessoa",
+        type: "GET",
+        dataType: "json",
+        success: function(resposta) {
+            $("#mensagem_webapi").text(JSON.stringify(resposta))
+        },
+        error: function (request, message, error) {
+            alert (message)
+        }
+    })
+}
+
+</script>
